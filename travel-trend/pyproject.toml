@@ -1,0 +1,23 @@
+[project]
+name = "travel-trend"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "leesihyeong17",email = "dltlgud7901@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django (>=4.2,<5.0)",
+    "djangorestframework (>=3.17.1,<4.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "pytrends (>=4.9.2,<5.0.0)",
+    "google-generativeai (>=0.8.6,<0.9.0)",
+    "django-cors-headers (>=4.9.0,<5.0.0)",
+    "google-genai (>=2.0.1,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

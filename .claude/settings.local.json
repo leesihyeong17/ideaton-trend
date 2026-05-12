@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(poetry run *)",
+      "Bash(poetry add *)",
+      "Bash(dir /s /b \"c:\\\\Users\\\\dltlg\\\\likelion-ideaton\\\\travel-trend\\\\trends\")"
+    ]
+  }
+}
