@@ -57,7 +57,7 @@ DB        : SQLite (데모용)
 ### 1. 레포 클론
 ```bash
 git clone https://github.com/유저명/travel-trend.git
-cd travel-trend/travel-trend
+cd travel-trend
 ```
 
 ### 2. Poetry 설치 확인
