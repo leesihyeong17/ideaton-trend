@@ -9,6 +9,15 @@ _MODEL = 'gemini-2.5-flash'
 _JSON_CONFIG = types.GenerateContentConfig(response_mime_type='application/json')
 
 
+def _generate(prompt: str) -> str:
+    response = _client.models.generate_content(
+        model=_MODEL,
+        contents=prompt,
+        config=_JSON_CONFIG,
+    )
+    return response.text
+
+
 def generate_trends_fallback(city: str, top_n: int = 10) -> list[dict]:
     """pytrends 실패 시 Gemini가 직접 트렌드 데이터를 생성."""
     prompt = f"""
@@ -29,12 +38,7 @@ def generate_trends_fallback(city: str, top_n: int = 10) -> list[dict]:
 ]
 """.strip()
 
-    response = _client.models.generate_content(
-        model=_MODEL,
-        contents=prompt,
-        config=_JSON_CONFIG,
-    )
-    return _parse_json(response.text)
+    return _parse_json(_generate(prompt))
 
 
 def analyze_trends(city: str, raw_trends: list[dict]) -> list[dict]:
@@ -59,12 +63,7 @@ def analyze_trends(city: str, raw_trends: list[dict]) -> list[dict]:
 JSON 배열만 반환하세요.
 """.strip()
 
-    response = _client.models.generate_content(
-        model=_MODEL,
-        contents=prompt,
-        config=_JSON_CONFIG,
-    )
-    return _parse_json(response.text)
+    return _parse_json(_generate(prompt))
 
 
 def generate_route(city: str, saved_trends: list[str]) -> list[dict]:
@@ -88,12 +87,7 @@ def generate_route(city: str, saved_trends: list[str]) -> list[dict]:
 JSON 배열만 반환하세요.
 """.strip()
 
-    response = _client.models.generate_content(
-        model=_MODEL,
-        contents=prompt,
-        config=_JSON_CONFIG,
-    )
-    return _parse_json(response.text)
+    return _parse_json(_generate(prompt))
 
 
 def _parse_json(text: str):
