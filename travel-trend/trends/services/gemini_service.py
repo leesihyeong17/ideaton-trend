@@ -18,19 +18,34 @@ def _generate(prompt: str) -> str:
     return response.text
 
 
+CATEGORIES = [
+    "음식",
+    "음료/카페/바",
+    "뜨는 장소",
+    "쇼핑/팝업",
+    "스타일/뷰티트랜드",
+    "전시/공연/음악/예술",
+    "체험/취미/액티비티",
+    "현지 일상/생활 방식",
+    "유행어/밈/로컬이슈",
+]
+
+_CATEGORY_OPTIONS = " | ".join(f'"{c}"' for c in CATEGORIES)
+
+
 def generate_trends_fallback(city: str, top_n: int = 10) -> list[dict]:
     """pytrends 실패 시 Gemini가 직접 트렌드 데이터를 생성."""
     prompt = f"""
 당신은 여행 트렌드 분석 전문가입니다.
 {city}에서 지금 현지인들 사이에 실제로 유행 중인 트렌드 키워드 {top_n}개를 만들어주세요.
-음식·음료, 장소, 쇼핑, 액티비티, 문화 카테고리를 고르게 포함하세요.
+아래 카테고리들을 고르게 포함하세요: {', '.join(CATEGORIES)}
 
 아래 형식의 JSON 배열만 반환하세요:
 [
   {{
     "rank": 1,
     "keyword": "키워드",
-    "category": "음식·음료" | "장소" | "쇼핑" | "액티비티" | "문화",
+    "category": {_CATEGORY_OPTIONS},
     "life_cycle": "Rookie" | "Trending" | "Tourist-heavy",
     "context": "{city}에서 이 키워드가 왜 지금 트렌드인지 한국어로 1~2문장",
     "rising_percentage": 50~500 사이 정수
@@ -54,7 +69,7 @@ def analyze_trends(city: str, raw_trends: list[dict]) -> list[dict]:
 필드 설명:
 - rank: 순위 (원본 유지)
 - keyword: 키워드 (원본 유지)
-- category: 다음 5가지 중 정확히 하나 → "음식·음료" | "장소" | "쇼핑" | "액티비티" | "문화"
+- category: 다음 9가지 중 정확히 하나 → {_CATEGORY_OPTIONS}
 - life_cycle: 다음 3가지 중 정확히 하나 → "Rookie" | "Trending" | "Tourist-heavy"
   (life_cycle 참고하되, 키워드 성격에 맞게 최종 판단)
 - context: {city}에서 이 키워드가 왜 트렌드인지 한국어로 1~2문장
