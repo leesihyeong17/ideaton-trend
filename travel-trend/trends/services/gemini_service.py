@@ -46,7 +46,7 @@ def generate_trends_fallback(city: str, top_n: int = 10) -> list[dict]:
     "rank": 1,
     "keyword": "키워드",
     "category": {_CATEGORY_OPTIONS},
-    "life_cycle": "Rookie" | "Trending" | "Tourist-heavy",
+    "life_cycle": "rookie" | "rising" | "hot" | "steady",
     "context": "{city}에서 이 키워드가 왜 지금 트렌드인지 한국어로 1~2문장",
     "rising_percentage": 50~500 사이 정수
   }}
@@ -70,7 +70,7 @@ def analyze_trends(city: str, raw_trends: list[dict]) -> list[dict]:
 - rank: 순위 (원본 유지)
 - keyword: 키워드 (원본 유지)
 - category: 다음 9가지 중 정확히 하나 → {_CATEGORY_OPTIONS}
-- life_cycle: 다음 3가지 중 정확히 하나 → "Rookie" | "Trending" | "Tourist-heavy"
+- life_cycle: 다음 4가지 중 정확히 하나 → "rookie" | "rising" | "hot" | "steady"
   (life_cycle 참고하되, 키워드 성격에 맞게 최종 판단)
 - context: {city}에서 이 키워드가 왜 트렌드인지 한국어로 1~2문장
 - rising_percentage: 원본 유지 (정수)
