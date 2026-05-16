@@ -107,7 +107,7 @@ class TravelTrendStaticView(APIView):
                 "category": "음료/카페/바",
                 "life_cycle": "Rookie",
                 "context": "도쿄 Z세대는 이제 \"음료\"보다 경험 콘텐츠",
-                "rising_percentage": 250
+                "trend_score": 85
             },
             {
                 "rank": 2,
@@ -115,7 +115,7 @@ class TravelTrendStaticView(APIView):
                 "category": "유행어/밈/로컬이슈",
                 "life_cycle": "Hot",
                 "context": "MBTI의 16가지 유형을 연애스타일로 재해석한 심리테스트",
-                "rising_percentage": 180
+                "trend_score": 62
             },
              {
                 "rank": 3,
@@ -123,7 +123,7 @@ class TravelTrendStaticView(APIView):
                 "category": "스타일/뷰티트랜드",
                 "life_cycle": "Steady",
                 "context": "피부를 5초 만에 생기 있게 하는 \'가방 속 필수 아이템\'",
-                "rising_percentage": 180
+                "trend_score": 62
             },
             {
                 "rank": 4,
@@ -131,7 +131,7 @@ class TravelTrendStaticView(APIView):
                 "category": "음식",
                 "life_cycle": "Hot",
                 "context": "고소한 볶은 차 향을 담은 푸딩∙파르페∙라떼 디저트, 말차보다 부드러운 맛으로 주목받는 중",
-                "rising_percentage": 250
+                "trend_score": 89
             },
             {
                 "rank": 5,
@@ -139,7 +139,7 @@ class TravelTrendStaticView(APIView):
                 "category": "음식",
                 "life_cycle": "Rising",
                 "context": "브리오슈 반죽으로 만든 부드럽고 촉촉한 식감의 도넛, 후쿠오카에서 시작해 도쿄에서 인기 확산 중",
-                "rising_percentage": 180
+                "trend_score": 62
             },
              {
                 "rank": 6,
@@ -147,7 +147,7 @@ class TravelTrendStaticView(APIView):
                 "category": "음식",
                 "life_cycle": "Steady",
                 "context": "비주얼 중심 카페에서 다시 유행 중인 일본식 과일 샌드",
-                "rising_percentage": 180
+                "trend_score": 62
             },
             {
                 "rank": 7,
@@ -155,7 +155,7 @@ class TravelTrendStaticView(APIView):
                 "category": "음식",
                 "life_cycle": "Hot",
                 "context": "백화점 디저트층과 호텔 카페 중심으로 급상승 중인 멜론 빙수",
-                "rising_percentage": 180
+                "trend_score": 62
             }
         ]
         

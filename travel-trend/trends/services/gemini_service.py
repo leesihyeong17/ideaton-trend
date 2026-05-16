@@ -48,7 +48,7 @@ def generate_trends_fallback(city: str, top_n: int = 10) -> list[dict]:
     "category": {_CATEGORY_OPTIONS},
     "life_cycle": "Rookie" | "Rising" | "Hot" | "Steady",
     "context": "{city}에서 이 키워드가 왜 지금 트렌드인지 한국어로 1~2문장",
-    "rising_percentage": 50~500 사이 정수
+    "trend_score": 0~100 사이 정수
   }}
 ]
 """.strip()
@@ -73,7 +73,7 @@ def analyze_trends(city: str, raw_trends: list[dict]) -> list[dict]:
 - life_cycle: 다음 4가지 중 정확히 하나 → "Rookie" | "Rising" | "Hot" | "Steady"
   (life_cycle 참고하되, 키워드 성격에 맞게 최종 판단)
 - context: {city}에서 이 키워드가 왜 트렌드인지 한국어로 1~2문장
-- rising_percentage: 원본 유지 (정수)
+- trend_score: 0~100 사이 정수로 트렌드 강도 판단
 
 JSON 배열만 반환하세요.
 """.strip()
