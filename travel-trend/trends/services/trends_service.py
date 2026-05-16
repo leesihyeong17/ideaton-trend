@@ -41,12 +41,12 @@ def get_trending_keywords(city: str, top_n: int = 10) -> list[dict]:
     results = []
     for i, keyword in enumerate(keywords):
         values = interest_map.get(keyword, [])
-        rising_pct = _calc_rising_pct(values) if values else max(50, 300 - i * 25)
+        rising_pct = _calc_rising_pct(values) if values else max(0, 100 - i * 5)
         life_cycle = _determine_life_cycle(values) if values else 'Rising'
         results.append({
             'rank': i + 1,
             'keyword': keyword,
-            'rising_percentage': max(0, rising_pct),
+            'trend_score': min(100, max(0, rising_pct)),
             'life_cycle': life_cycle,
         })
 
@@ -77,8 +77,9 @@ def _calc_rising_pct(values: list) -> int:
     first_avg = sum(values[:mid]) / mid
     second_avg = sum(values[mid:]) / (len(values) - mid)
     if first_avg == 0:
-        return 500 if second_avg > 0 else 0
-    return int((second_avg - first_avg) / first_avg * 100)
+        return 100 if second_avg > 0 else 0
+    ratio = (second_avg - first_avg) / first_avg * 100
+    return min(100, max(0, int(ratio / 5)))
 
 
 def _determine_life_cycle(values: list) -> str:
