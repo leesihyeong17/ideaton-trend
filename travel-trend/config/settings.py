@@ -10,7 +10,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-key')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '')
 
-ALLOWED_HOSTS = ['*']   
+#ALLOWED_HOSTS = ['3.34.16.47'] 
+ALLOWED_HOSTS = ['*']  # 개발 단계에서는 모든 호스트 허용, 배포 시에는 적절히 설정  
 
 
 # Application definition
